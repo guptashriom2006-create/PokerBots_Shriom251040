@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+\geometry{margin=2.5cm}
+
+\title{Game Analysis: The (10, 10) Rock Game}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent Two piles of 10 rocks each. On your turn, take 1 from Pile A, 1 from Pile B, or 1 from both. The player who takes the last rock wins. Your opponent moves first.
+
+\section*{W-positions and L-positions}
+
+A position is a \textbf{L-position} if the player about to move loses (with optimal play), and an \textbf{W-position} if they win. The terminal position $(0,0)$ is a P-position since the player facing it has already lost.
+
+\section*{The Pattern}
+
+Seeing the pattern in small cases reveals:
+
+\[
+(a, b) \text{ is a L-position} \iff a \equiv 0 \pmod{2} \text{ and } b \equiv 0 \pmod{2}
+\]
+
+\textbf{Proof:}
+
+\medskip
+\noindent\textit{Both even $\Rightarrow$ every move leads to an W-position.}
+The three moves give $(a-1,b)$, $(a,b-1)$, $(a-1,b-1)$. In each case at least one coordinate becomes odd, so no move reaches a L-position. Hence the current player loses. 
+
+\medskip
+\noindent\textit{At least one odd $\Rightarrow$ some move leads to a L-position.}
+\begin{itemize}
+  \item $a$ odd, $b$ even: take from A $\to$ $(a-1, b)$, both even.
+  \item $a$ even, $b$ odd: take from B $\to$ $(a, b-1)$, both even.
+  \item Both odd: take from both $\to$ $(a-1, b-1)$, both even.
+\end{itemize}
+In every case there is a move to a L-position. Hence the current player wins. 
+
+\section*{Result for (10, 10)}
+
+Since $10 \equiv 0 \pmod{2}$, the position $(10,10)$ is a \textbf{L-position}.The opponent moves first and faces a L-position, so \textbf{we win} with optimal play.
+
+\section*{Winning Strategy}
+
+After every opponent move, restore both piles to even numbers:
+
+\begin{itemize}
+  \item Takes from A only ($a$ odd, $b$ even): take 1 from A $\to$ both even.
+  \item Takes from B only ($a$ even, $b$ odd): take 1 from B $\to$ both even.
+  \item Takes from both (both odd): take from both $\to$ both even.
+\end{itemize}
+
+\noindent We always hand our opponent a L-position. This continues until you take the last rock(s) at $(2,2) \to (1,1) \to (0,0)$ and win.
+
+\end{document}
