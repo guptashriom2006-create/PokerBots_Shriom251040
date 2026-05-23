@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{PSNE of the Public Goods Game}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent $n$ players choose Contribute (C) or Not (N). Good provided iff at least $k$ contribute.
+\newline Preferences: free-ride $\succ$ contribute+good succeeds $\succ$ not contribute+ good fails $\succ$ wasted capital.
+\newline
+\newline Let s players choose Contribute, then we have the following cases
+
+\section*{Case 1: $s > k$ contributors}
+
+Any contributor can switch to N, still good provided ($s-1 \geq k$), and they go from outcome 2 to outcome 1. Strictly better. \textbf{Not a PSNE.}
+
+\section*{Case 2: $s = k$ contributors}
+
+\begin{itemize}
+  \item Contributor deviates to N: $s$ drops to $k-1$, good fails, outcome 2 $\to$ 3. No incentive.
+  \item Non-contributor deviates to C: outcome 1 $\to$ 2. No incentive.
+\end{itemize}
+
+\textbf{PSNE.} There are $\binom{n}{k}$ such equilibria.
+
+\section*{Case 3: $1 \leq s < k$ contributors}
+
+Good not provided. Any contributor gets outcome 4; switching to N gives outcome 3. Strictly better.
+\newline \textbf{Not a PSNE.}
+
+\section*{Case 4: $s = 0$ (all N)}
+
+A lone deviator contributes, $s=1 < k$, good still fails, outcome 4 $\to$ 3. No incentive. \textbf{Not a PSNE.}
+
+\section*{Result}
+
+All PSNEs: exactly $k$ contributors $\left(\binom{n}{k} \text{ equilibria}\right)$ or nobody contributes (1 equilibrium). Total: $\binom{n}{k} + 1$.
+
+\end{document}
